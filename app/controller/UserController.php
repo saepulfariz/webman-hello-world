@@ -15,4 +15,16 @@ class UserController
         // Return a string to the browser
         return response('hello ' . $name);
     }
+
+    // http://localhost:8787/user/json?name=tom
+    public function json(Request $request)
+    {
+        $default_name = 'webman';
+        $name = $request->get('name', $default_name);
+        return json([
+            'code' => 0,
+            'msg' => 'ok',
+            'data' => $name
+        ]);
+    }
 }
