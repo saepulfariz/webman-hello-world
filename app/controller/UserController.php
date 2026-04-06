@@ -27,4 +27,12 @@ class UserController
             'data' => $name
         ]);
     }
+
+    // http://localhost:8787/user/view?name=tom
+    public function view(Request $request)
+    {
+        $default_name = 'webman';
+        $name = $request->get('name', $default_name);
+        return view('user/hello', ['name' => $name]);
+    }
 }
